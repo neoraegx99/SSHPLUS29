@@ -2,9 +2,9 @@
 #====================================================
 #	SCRIPT: CONEXAO SSHPLUS MANAGER
 #   DATA ATT:   15 de Jul 2020
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	DESENVOLVIDO POR:	KH-VPN
+#	CONTATO TELEGRAM:	http://t.me/dev_vpn
+#	CANAL TELEGRAM:	http://t.me/khmernetvpn
 #====================================================
 _lvk=$(wget -qO- https://raw.githubusercontent.com/teamvpn/SSHPLUS29/master/Install/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
