@@ -1,9 +1,9 @@
 #!/bin/bash
 #====================================================
-#	SCRIPT: CRIARUSUARIO SSHPLUS MANAGER
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	SCRIPT:         KH-VPN FREE SCRIPT
+#	DEVELOPED BY:	OVPN-PRO
+#	FACEBOOK:	https://m.me/freenetvpndtac
+#	WEBSITE:	https://fastnetvpn.pw
 #====================================================
 IP=$(cat /etc/IP)
 cor1='\033[41;1;37m'
