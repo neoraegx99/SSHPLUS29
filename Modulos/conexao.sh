@@ -16,7 +16,7 @@ ${comando[1]} > /dev/null 2>&1
 touch $HOME/fim
  ) > /dev/null 2>&1 &
  tput civis
-echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+echo -ne "\033[1;33mโปรดรอสักครู่... \033[1;37m- \033[1;33m["
 while true; do
    for((i=0; i<18; i++)); do
    echo -ne "\033[1;31m#"
@@ -27,9 +27,9 @@ while true; do
    sleep 1s
    tput cuu1
    tput dl1
-   echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+   echo -ne "\033[1;33mโปรดรอสักครู่... \033[1;37m- \033[1;33m["
 done
-echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+echo -e "\033[1;33m]\033[1;37m -\033[1;32m สำเร็จ !\033[1;37m"
 tput cnorm
 }
 
@@ -39,7 +39,7 @@ PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LIS
 for pton in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
     svcs=$(echo -e "$PT" | grep -w "$pton" | awk '{print $1}' | uniq)
     [[ "$porta" = "$pton" ]] && {
-    	echo -e "\n\033[1;31mPORTA \033[1;33m$porta \033[1;31mEM USO PELO \033[1;37m$svcs\033[0m"
+    	echo -e "\n\033[1;31mPORT \033[1;33m$porta \033[1;31mใช้งานโดย \033[1;37m$svcs\033[0m"
     	sleep 3
     	fun_conexao
     }
@@ -48,11 +48,11 @@ done
 
 inst_sqd (){
 if netstat -nltp|grep 'squid' 1>/dev/null 2>/dev/null;then
-	echo -e "\E[41;1;37m            REMOVER SQUID PROXY              \E[0m"
+	echo -e "\E[41;1;37m            ลบ SQUID PROXY              \E[0m"
 	echo ""
-	echo -ne "\033[1;32mREALMENTE DESEJA REMOVER O SQUID \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resp
-	if [[ "$resp" = 's' ]]; then
-		echo -e "\n\033[1;32mREMOVENDO O SQUID PROXY !\033[0m"
+	echo -ne "\033[1;32mต้องการลบ SQUID \033[1;31m? \033[1;33m[y/n]:\033[1;37m "; read resp
+	if [[ "$resp" = 'y' ]]; then
+		echo -e "\n\033[1;32mลบ SQUID PROXY !\033[0m"
 		echo ""
 		rem_sqd () 
 		{
@@ -68,40 +68,40 @@ if netstat -nltp|grep 'squid' 1>/dev/null 2>/dev/null;then
 		fi
 	    }
 	    fun_bar 'rem_sqd'
-		echo -e "\n\033[1;32mSQUID REMOVIDO COM SUCESSO !\033[0m"
+		echo -e "\n\033[1;32mลบ SQUID PROXY สำเร็จ !\033[0m"
 		sleep 3.5s
 		clear
 		fun_conexao
 	else
-		echo -e "\n\033[1;31mRetornando...\033[0m"
+		echo -e "\n\033[1;31mกลับ...\033[0m"
 		sleep 3
 		clear
 		fun_conexao
 	fi
 else
 clear
-echo -e "\E[44;1;37m              INSTALADOR SQUID                \E[0m"
+echo -e "\E[44;1;37m              ติดตั้ง SQUID PROXY               \E[0m"
 echo ""
 IP=$(wget -qO- ipv4.icanhazip.com)
-echo -ne "\033[1;32mPARA CONTINUAR CONFIRME SEU IP: \033[1;37m"; read -e -i $IP ipdovps
+echo -ne "\033[1;32mกด Enter เพื่อยืนยัน IP คุณ: \033[1;37m"; read -e -i $IP ipdovps
 if [[ -z "$ipdovps" ]];then
-echo -e "\n\033[1;31mIP invalido\033[1;32m"
+echo -e "\n\033[1;31mIP ไม่ถูกต้อง\033[1;32m"
 echo ""
-read -p "Digite seu IP: " IP
+read -p "ป้อน IP ของคุณ: " IP
 fi
-echo -e "\n\033[1;33mQUAIS PORTAS DESEJA ULTILIZAR NO SQUID \033[1;31m?"
-echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mDEFINA AS PORTAS EM SEQUENCIA \033[1;33mEX: \033[1;37m80 8080 8799"
+echo -e "\n\033[1;33mPort ใดที่คุณต้องการใช้กับ SQUID \033[1;31m?"
+echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mกำหนด Port ตามลำดับ \033[1;33mEX: \033[1;37m80 8080 8799 3128"
 echo ""
-echo -ne "\033[1;32mINFORME AS PORTAS\033[1;37m: "; read portass
+echo -ne "\033[1;32mPort\033[1;37m: "; read portass
 if [[ -z "$portass" ]]; then
-	echo -e "\n\033[1;31mPorta invalida!"
+	echo -e "\n\033[1;31mPort ไม่ถูกต้อง!"
 	sleep 3
 	fun_conexao
 fi
 for porta in $(echo -e $portass); do
 	verif_ptrs $porta
 done
-echo -e "\n\033[1;32mINSTALANDO SQUID PROXY\033[0m"
+echo -e "\n\033[1;32mติดตั้ง SQUID PROXY\033[0m"
 echo ""
 fun_bar 'apt-get update -y' 'apt-get install squid3 -y'
 sleep 1
@@ -123,7 +123,7 @@ echo ".claro.com.br/
 echo "acl url1 dstdomain -i 127.0.0.1
 acl url2 dstdomain -i localhost
 acl url3 dstdomain -i $ipdovps
-acl url4 dstdomain -i /SSHPLUS?
+acl url4 dstdomain -i www.fastnetvpn.pw
 acl payload url_regex -i "$var_pay"
 acl all src 0.0.0.0/0
 
@@ -141,7 +141,7 @@ echo -e "http_port $Pts" >> $var_sqd
 done
 echo -e "
 #Nome squid
-visible_hostname SSHPLUS 
+visible_hostname OVPN-PRO 
 via off
 forwarded_for off
 pipeline_prefetch off" >> $var_sqd
@@ -156,85 +156,85 @@ service ssh restart
 service squid3 restart
 fi
 }
-echo -e "\n\033[1;32mCONFIGURANDO SQUID PROXY\033[0m"
+echo -e "\n\033[1;32mตั้งค่า SQUID PROXY\033[0m"
 echo ""
 fun_bar 'sqd_conf'
-echo -e "\n\033[1;32mSQUID INSTALADO COM SUCESSO!\033[0m"
+echo -e "\n\033[1;32mติดตั้ง SQUID PROXY เรียบร้อยแล้ว!\033[0m"
 sleep 3.5s
 fun_conexao
 fi
 }
 
 addpt_sqd () {
-	echo -e "\E[44;1;37m         ADICIONAR PORTA AO SQUID         \E[0m"
-	echo -e "\n\033[1;33mPORTAS EM USO: \033[1;32m$sqdp\n"
+	echo -e "\E[44;1;37m         เพื่อม Port Proxy         \E[0m"
+	echo -e "\n\033[1;33mPort ใช้งาน: \033[1;32m$sqdp\n"
 	if [[ -f "/etc/squid/squid.conf" ]]; then
 		var_sqd="/etc/squid/squid.conf"
 	elif [[ -f "/etc/squid3/squid.conf" ]]; then
 		var_sqd="/etc/squid3/squid.conf"
 	else
-		echo -e "\n\033[1;31mSQUID NAO ESTA INSTALADO!\033[0m"
-		echo -e "\n\033[1;31mRetornando...\033[0m"
+		echo -e "\n\033[1;31mไม่ได้ติดตั้ง SQUID PROXY!\033[0m"
+		echo -e "\n\033[1;31mกลับ...\033[0m"
 		sleep 2
 		clear
 		fun_squid
 	fi
-	echo -ne "\033[1;32mQUAL PORTA DESEJA ADICIONAR \033[1;33m?\033[1;37m "; read pt
+	echo -ne "\033[1;32mคุณต้องการเพิ่มพอร์ตใด\033[1;33m?\033[1;37m "; read pt
 	if [[ -z "$pt" ]]; then
-		echo -e "\n\033[1;31mPorta invalida!"
+		echo -e "\n\033[1;31mPort ไม่ถูกต้อง!"
 		sleep 3
 		clear
 		fun_conexao		
 	fi
 	verif_ptrs $pt
-	echo -e "\n\033[1;32mADICIONANDO PORTA AO SQUID!"
+	echo -e "\n\033[1;32mเพิ่ม PORT PROXY!"
 	echo ""
 	sed -i "s/#Portas/#Portas\nhttp_port $pt/g" $var_sqd
 	fun_bar 'sleep 2'
-	echo -e "\n\033[1;32mREINICIANDO O SQUID!"
+	echo -e "\n\033[1;32mรีเซ็ต SQUID!"
 	echo ""
 	fun_bar 'service squid restart' 'service squid3 restart'
-	echo -e "\n\033[1;32mPORTA ADICIONADA COM SUCESSO!"
+	echo -e "\n\033[1;32mเพิ่อม PORT สำเร็จ!"
 	sleep 3
 	clear
 	fun_squid
 }
 
 rempt_sqd () {
-	echo -e "\E[41;1;37m        REMOVER PORTA DO SQUID        \E[0m"
-	echo -e "\n\033[1;33mPORTAS EM USO: \033[1;32m$sqdp\n"
+	echo -e "\E[41;1;37m        ลบ PORT PROXY        \E[0m"
+	echo -e "\n\033[1;33mPORT ใช้งาน: \033[1;32m$sqdp\n"
 	if [[ -f "/etc/squid/squid.conf" ]]; then
 		var_sqd="/etc/squid/squid.conf"
 	elif [[ -f "/etc/squid3/squid.conf" ]]; then
 		var_sqd="/etc/squid3/squid.conf"
 	else
-		echo -e "\n\033[1;31mSQUID NAO ESTA INSTALADO!\033[0m"
-		echo -e "\n\033[1;31mRetornando...\033[0m"
+		echo -e "\n\033[1;31mไม่ได้ติดตั้ง Squid Proxy!\033[0m"
+		echo -e "\n\033[1;31mกลับ...\033[0m"
 		sleep 2
 		clear
 		fun_squid
 	fi
-	echo -ne "\033[1;32mQUAL PORTA DESEJA REMOVER \033[1;33m?\033[1;37m "; read pt
+	echo -ne "\033[1;32mREMOVE PORT \033[1;33m?\033[1;37m "; read pt
 	if [[ -z "$pt" ]]; then
-		echo -e "\n\033[1;31mPorta invalida!"
+		echo -e "\n\033[1;31mPort ไม่ถูกต้อง!"
 		sleep 2
 		clear
 		fun_conexao
 	fi
 	if grep -E "$pt" $var_sqd > /dev/null 2>&1; then
-		echo -e "\n\033[1;32mREMOVENDO PORTA DO SQUID!"
+		echo -e "\n\033[1;32mลบ PORT PROXY!"
 		echo ""
 		sed -i "/http_port $pt/d" $var_sqd
 		fun_bar 'sleep 3'
-		echo -e "\n\033[1;32mREINICIANDO O SQUID!"
+		echo -e "\n\033[1;32mรีเซ็ต SQUID!"
 		echo ""
 		fun_bar 'service squid restart' 'service squid3 restart'
-		echo -e "\n\033[1;32mPORTA REMOVIDA COM SUCESSO!"
+		echo -e "\n\033[1;32mลบ PORT สำเร็จ!"
 		sleep 3.5s
 		clear
 		fun_squid
 	else
-		echo -e "\n\033[1;31mPORTA \033[1;32m$pt \033[1;31mNAO ENCONTRADA!"
+		echo -e "\n\033[1;31mPORT \033[1;32m$pt \033[1;31mไม่พบ!"
 		sleep 3.5s
 		clear
 		fun_squid
