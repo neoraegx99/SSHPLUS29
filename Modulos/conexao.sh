@@ -816,7 +816,7 @@ if [[ -e /etc/openvpn/server.conf ]]; then
                 		tput cnorm
                 	}
                 	echo ""
-                	echo -ne "\033[1;31mบล็อกล็อกอินหลายบัญขี\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
+                	echo -ne "\033[1;31mปิดล็อกอินหลายบัญขี\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
                 	helice
                 	echo -e "\e[1DOk"
                 }
@@ -1549,7 +1549,7 @@ fun_sslh () {
      fi
   } || {
     clear
-    echo -e "\E[41;1;37m             REMOVER O SSLH               \E[0m\n"
+    echo -e "\E[41;1;37m             ลบ SSLH               \E[0m\n"
 	echo -ne "\033[1;32mREALMENTE DESEJA REMOVER O SSLH \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read respo
     if [[ "$respo" = "s" ]]; then
 	    fun_delsslh () {
@@ -1557,13 +1557,13 @@ fun_sslh () {
 	        apt-get remove sslh -y
 	        apt-get purge sslh -y
 	     }
-	    echo -e "\n\033[1;32mREMOVENDO O SSLH !\033[0m\n"
+	    echo -e "\n\033[1;32mลบ SSLH !\033[0m\n"
 	    fun_bar 'fun_delsslh'
-	    echo -e "\n\033[1;32mREMOVIDO COM SUCESSO !\033[0m\n"
+	    echo -e "\n\033[1;32mลบ SSLH สำเร็จ !\033[0m\n"
 	    sleep 2
 	    fun_conexao
     else
-	     echo -e "\n\033[1;31mRetornando.."
+	     echo -e "\n\033[1;31mกลับ.."
          sleep 2
          fun_conexao
     fi
@@ -1576,18 +1576,18 @@ while true $x != "ok"
 do
 [[ ! -e '/home/sshplus' ]] && exit 0
 clear
-echo -e "\E[44;1;37m                MODO DE CONEXAO                 \E[0m\n"
-echo -e "\033[1;32mSERVICO: \033[1;33mOPENSSH \033[1;32mPORTA: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config|cut -d' ' -f2 |grep -v 'no' |xargs)" && sts6="\033[1;32m◉ "
+echo -e "\E[44;1;37m                โหมดการเชื่อมต่อ                 \E[0m\n"
+echo -e "\033[1;32mระบบ: \033[1;33mOPENSSH \033[1;32mPORT: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config|cut -d' ' -f2 |grep -v 'no' |xargs)" && sts6="\033[1;32m◉ "
 
 [[ "$(netstat -nltp|grep 'sslh' |wc -l)" != '0' ]] && {
-	echo -e "\033[1;32mSERVICO: \033[1;33mSSLH: \033[1;32mPORTA: \033[1;37m$(netstat -nplt |grep 'sslh' |awk {'print $4'} |cut -d: -f2 |xargs)"
+	echo -e "\033[1;32mระบบ: \033[1;33mSSLH: \033[1;32mPORT: \033[1;37m$(netstat -nplt |grep 'sslh' |awk {'print $4'} |cut -d: -f2 |xargs)"
 	sts7="\033[1;32m◉ "
 } || {
 	sts7="\033[1;31m○ "
 }
 
 [[ "$(netstat -nplt |grep 'openvpn' |wc -l)" != '0' ]] && {
-	echo -e "\033[1;32mSERVICO: \033[1;33mOPENVPN: \033[1;32mPORTA: \033[1;37m$(netstat -nplt |grep 'openvpn' |awk {'print $4'} |cut -d: -f2 |xargs)"
+	echo -e "\033[1;32mระบบ: \033[1;33mOPENVPN: \033[1;32mPORT: \033[1;37m$(netstat -nplt |grep 'openvpn' |awk {'print $4'} |cut -d: -f2 |xargs)"
 	sts5="\033[1;32m◉ "
 } || {
 	sts5="\033[1;31m○ "
@@ -1600,19 +1600,19 @@ echo -e "\033[1;32mSERVICO: \033[1;33mOPENSSH \033[1;32mPORTA: \033[1;37m$(grep 
 	sts4="\033[1;31m○ "
 }
 [[ -e "/etc/stunnel/stunnel.conf" ]] && {
-	echo -e "\033[1;32mSERVICO: \033[1;33mSSL TUNNEL \033[1;32mPORTA: \033[1;37m$(netstat -nplt |grep 'stunnel' | awk {'print $4'} |cut -d: -f2 |xargs)"
+	echo -e "\033[1;32mระบบ: \033[1;33mSSL TUNNEL \033[1;32mPORT: \033[1;37m$(netstat -nplt |grep 'stunnel' | awk {'print $4'} |cut -d: -f2 |xargs)"
 	sts3="\033[1;32m◉ "
 } || {
 	sts3="\033[1;31m○ "
 }
 [[ "$(netstat -nltp|grep 'dropbear' |wc -l)" != '0' ]] && {
-	echo -e "\033[1;32mSERVICO: \033[1;33mDROPBEAR \033[1;32mPORTA: \033[1;37m$(netstat -nplt |grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
+	echo -e "\033[1;32mระบบ: \033[1;33mDROPBEAR \033[1;32mPORT: \033[1;37m$(netstat -nplt |grep 'dropbear' | awk -F ":" {'print $4'} | xargs)"
 	sts2="\033[1;32m◉ "
 } || {
 	sts2="\033[1;31m○ "
 }
 [[ "$(netstat -nplt |grep 'squid'| wc -l)" != '0' ]] && {
-	echo -e "\033[1;32mSERVICO: \033[1;33mSQUID \033[1;32mPORTA: \033[1;37m$(netstat -nplt |grep 'squid' | awk -F ":" {'print $4'} | xargs)"
+	echo -e "\033[1;32mระบบ: \033[1;33mSQUID \033[1;32mPORT: \033[1;37m$(netstat -nplt |grep 'squid' | awk -F ":" {'print $4'} | xargs)"
 	sts1="\033[1;32m◉ "
 } || {
 	sts1="\033[1;31m○ "
@@ -1626,13 +1626,13 @@ echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mOPENSSH $sts
 [\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mPROXY SOCKS $sts4\033[1;31m
 [\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mSSL TUNNEL $sts3\033[1;31m
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mSSLH MULTIPLEX $sts7\033[1;31m
-[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mVOLTAR \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
-[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSAIR \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
+[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mย้อนกลับ \033[1;32m<\033[1;33m<\033[1;31m< \033[1;31m
+[\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mออก \033[1;32m<\033[1;33m<\033[1;31m< \033[0m"
 echo ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 tput civis
-echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m "; read x
+echo -ne "\033[1;32mChoose a menu \033[1;33m?\033[1;31m?\033[1;37m "; read x
 tput cnorm
 clear
 case $x in
@@ -1661,13 +1661,13 @@ case $x in
 	menu
 	;;
 	0|00)
-	echo -e "\033[1;31mSaindo...\033[0m"
+	echo -e "\033[1;31mออกจากหน้าต่าง...\033[0m"
 	sleep 2
 	clear
 	exit;
 	;;
 	*)
-	echo -e "\033[1;31mOpcao invalida !\033[0m"
+	echo -e "\033[1;31mเลื่อก ไม่ถูกต้อง !\033[0m"
 	sleep 2
 esac
 done
