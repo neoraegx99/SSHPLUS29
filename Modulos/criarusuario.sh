@@ -108,7 +108,7 @@ fun_edithost() {
     clear
     echo -e "\E[44;1;37m          เปลี่ยน โฮสต์ OVPN            \E[0m"
     echo ""
-    echo -e "\033[1;33mHOST EM USO\033[1;37m: \033[1;32m$Host"
+    echo -e "\033[1;33mHOST ที่ใช้งาน\033[1;37m: \033[1;32m$Host"
     echo ""
     echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mVIVO RECARGA"
     echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mVIVO NAVEGUE PRE"
@@ -117,85 +117,85 @@ fun_edithost() {
     echo -e "\033[1;31m[\033[1;36m5\033[1;31m] \033[1;33mVIVO MMS \033[1;31m[\033[1;37mAPN: \033[1;32mmms.vivo.com.br\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m6\033[1;31m] \033[1;33mMODO BYPASS \033[1;31m[\033[1;32mOPEN + INJECTOR\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m7\033[1;31m] \033[1;33mTODOS HOSTS \033[1;31m[\033[1;32m1 OVPN DE CADA\033[1;31m]"
-    echo -e "\033[1;31m[\033[1;36m8\033[1;31m] \033[1;33mEDITAR MANUALMENTE"
-    echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;33mVOLTAR"
+    echo -e "\033[1;31m[\033[1;36m8\033[1;31m] \033[1;33mแก้ไขด้วยตนเอง"
+    echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;33mกลับ"
     echo ""
-    echo -ne "\033[1;32mQUAL HOST DESEJA ULTILIZAR \033[1;33m?\033[1;37m "
+    echo -ne "\033[1;32mChoose A Host \033[1;33m?\033[1;37m "
     read respo
     [[ -z "$respo" ]] && {
-        echo -e "\n\033[1;31mOpcao invalida!"
+        echo -e "\n\033[1;31mไม่ถูกต้อง!"
         sleep 2
         fun_edithost
     }
     if [[ "$respo" = '1' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althost() {
             sed -i "s;$rmt;remote $rmt2 $_Port;" $cert01
             sed -i "s;$hedr;http-proxy-option CUSTOM-HEADER Host $vivo1;" $cert01
             sed -i "s;$prxy;http-proxy $IP 80;" $cert01
         }
         fun_bar 'fun_althost'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '2' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althost2() {
             sed -i "s;$rmt;remote $rmt2 $_Port;" $cert01
             sed -i "s;$hedr;http-proxy-option CUSTOM-HEADER Host $vivo3;" $cert01
             sed -i "s;$prxy;http-proxy $IP 80;" $cert01
         }
         fun_bar 'fun_althost2'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '3' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althostpay1() {
             sed -i "s;$rmt;remote $rmt2 $_Port;" $cert01
             sed -i "s;$hedr;$payload1;" $cert01
             sed -i "s;$prxy;http-proxy $IP 8080;" $cert01
         }
         fun_bar 'fun_althostpay1'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '4' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althostpay2() {
             sed -i "s;$rmt;remote $rmt2 $_Port;" $cert01
             sed -i "s;$hedr;$payload2;" $cert01
             sed -i "s;$prxy;http-proxy $IP 80;" $cert01
         }
         fun_bar 'fun_althostpay2'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '5' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althost5() {
             sed -i "s;$rmt;remote $rmt3;" $cert01
             sed -i "s;$hedr;http-proxy-option CUSTOM-HEADER Host $IP:$_Port;" $cert01
             sed -i "s;$prxy;http-proxy $prx 80;" $cert01
         }
         fun_bar 'fun_althost5'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '6' ]]; then
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_althost6() {
             sed -i "s;$rmt;remote $IP $_Port;" $cert01
             sed -i "s;$hedr;route $IP 255.255.255.255 net_gateway;" $cert01
             sed -i "s;$prxy;http-proxy 127.0.0.1 8989;" $cert01
         }
         fun_bar 'fun_althost6'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '7' ]]; then
         [[ ! -e "$HOME/$username.ovpn" ]] && fun_geraovpn
-        echo -e "\n\033[1;32mALTERANDO HOST!\033[0m\n"
+        echo -e "\n\033[1;32mเปลี่ยน HOST!\033[0m\n"
         fun_packhost() {
             [[ ! -d "$HOME/OVPN" ]] && mkdir $HOME/OVPN
             sed -i "7,9"d $HOME/$username.ovpn
@@ -226,11 +226,11 @@ fun_edithost() {
             cd $HOME && rm -rf /root/OVPN >/dev/null 2>&1
         }
         fun_bar 'fun_packhost'
-        echo -e "\n\033[1;32mHOST ALTERADO COM SUCESSO!\033[0m"
+        echo -e "\n\033[1;32mเปลี่ยนโฮสต์สำเร็จแล้ว!\033[0m"
         sleep 1.5
     elif [[ "$respo" = '8' ]]; then
         echo ""
-        echo -e "\033[1;32mALTERANDO ARQUIVO OVPN!\033[0m"
+        echo -e "\033[1;32mเปลี่ยนไฟล์ OVPN!\033[0m"
         echo ""
         echo -e "\033[1;31mATENCAO!\033[0m"
         echo ""
