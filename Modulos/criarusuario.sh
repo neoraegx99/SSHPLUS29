@@ -328,10 +328,10 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 	echo -ne "\033[1;32mGenerate Ovpn File \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read resp
 	[[ "$resp" = @(y|Y) ]] && {
 		rm $username.zip $username.ovpn >/dev/null 2>&1
-		echo -ne "\033[1;32mGenerate with username and password \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "
+		echo -ne "\033[1;32mGenerate with username and password \033[1;31m? \033[1;33m[S/N]:\033[1;37m "
 		read respost
-		echo -ne "\033[1;32mCurrent Host\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mChange \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read oprc
-		[[ "$oprc" = @(y|Y) ]] && {
+		echo -ne "\033[1;32mCurrent Host\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mChange \033[1;31m? \033[1;33m[S/N]:\033[1;37m "; read oprc
+		[[ "$oprc" = @(s|S) ]] && {
 			fun_edithost
 		} || {
 			fun_geraovpn
