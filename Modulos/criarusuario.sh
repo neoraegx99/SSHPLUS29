@@ -48,7 +48,7 @@ fun_geraovpn() {
     prx='200.142.130.104'
     payload1='#payload "HTTP/1.0 [crlf]Host: m.youtube.com[crlf]CONNECT HTTP/1.0[crlf][crlf]|[crlf]"'
     payload2='#payload "CONNECT 127.0.0.1:1194[split][crlf] HTTP/1.0 [crlf][crlf]#"'
-    vivo1="portalrecarga.vivo.com.br/recarga"
+    vivo1="www.opensignal.com"
     vivo2="portalrecarga.vivo.com.br/controle/"
     vivo3="navegue.vivo.com.br/pre/"
     vivo4="navegue.vivo.com.br/controle/"
