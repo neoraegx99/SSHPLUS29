@@ -57,7 +57,7 @@ fun_geraovpn() {
     bypass="net_gateway"
     cert01="/etc/openvpn/client-common.txt"
     if [[ "$hst" == "$vivo1" ]]; then
-        Host="Portal Recarga"
+        Host="www.opensignal.com"
     elif [[ "$hst" == "$vivo2" ]]; then
         Host="Recarga contole"
     elif [[ "$hst" == "$vivo3" ]]; then
