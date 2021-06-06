@@ -232,23 +232,23 @@ fun_edithost() {
         echo ""
         echo -e "\033[1;32mเปลี่ยนไฟล์ OVPN!\033[0m"
         echo ""
-        echo -e "\033[1;31mATENCAO!\033[0m"
+        echo -e "\033[1;31mคำเตื่อน!\033[0m"
         echo ""
-        echo -e "\033[1;33mPARA SALVAR USE AS TECLAS \033[1;32mctrl x y\033[0m"
+        echo -e "\033[1;33mเพื่อประหยัดการใช้งาน \033[1;32mctrl x y\033[0m"
         sleep 4
         clear
         nano /etc/openvpn/client-common.txt
         echo ""
-        echo -e "\033[1;32mALTERADO COM SUCESSO!\033[0m"
+        echo -e "\033[1;32mเพื่อประหยัดการใช้งาน!\033[0m"
         fun_geraovpn
         sleep 1.5
     elif [[ "$respo" = '0' ]]; then
         echo ""
-        echo -e "\033[1;31mRetornando...\033[0m"
+        echo -e "\033[1;31mกลับ...\033[0m"
         sleep 2
     else
         echo ""
-        echo -e "\033[1;31mOpcao invalida !\033[0m"
+        echo -e "\033[1;31mไม่ถูกต้อง !\033[0m"
         sleep 2
         fun_edithost
     fi
@@ -256,66 +256,66 @@ fun_edithost() {
 [[ ! -e /usr/lib/sshplus ]] && exit 0
 tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "Criar Usuário SSH";tput sgr0
 echo ""
-echo -ne "\033[1;32mNome do usuário:\033[1;37m ";read username
+echo -ne "\033[1;32mUsername:\033[1;37m ";read username
 [[ -z $username ]] && {
-	echo -e "\n${cor1}Nome de usuário vazio ou invalido!${scor}\n"
+	echo -e "\n${cor1}ชื่อผู้ใช้ว่างเปล่าหรือไม่ถูกต้อง!${scor}\n"
 	exit 1
 }
 [[ "$(grep -wc $username /etc/passwd)" != '0' ]] && {
-	echo -e "\n${cor1}Este usuário já existe. tente outro nome!${scor}\n"
+	echo -e "\n${cor1}มีผู้ใช้รายนี้อยู่แล้ว  ลองชื่ออื่น!${scor}\n"
 	exit 1
 }
 [[ ${username} != ?(+|-)+([a-zA-Z0-9]) ]] && {
-	echo -e "\n${cor1}Você digitou um nome de usuário inválido!${scor}"
-	echo -e "${cor1}Não use espaços, acentos ou caracteres especiais!${scor}\n"
+	echo -e "\n${cor1}คุณป้อนชื่อผู้ใช้ที่ไม่ถูกต้อง!${scor}"
+	echo -e "${cor1}อย่าเว้นวรรค หรืออักขระพิเศษ!${scor}\n"
 	exit 1
 }
 sizemin=$(echo ${#username})
 [[ $sizemin -lt 2 ]] && {
-	echo -e "\n${cor1}Você digitou um nome de usuário muito curto${scor}"
-	echo -e "${cor1}use no mínimo dois caracteres!${scor}\n"
+	echo -e "\n${cor1}คุณป้อนชื่อผู้ใช้ที่สั้นมาก${scor}"
+	echo -e "${cor1}ใช้อักขระอย่างน้อยสองตัว!${scor}\n"
 	exit 1
 }
 sizemax=$(echo ${#username})
 [[ $sizemax -gt 10 ]] && {
-	echo -e "\n${cor1}Você digitou um nome de usuário muito grande"
-	echo -e "${cor1}use no máximo 10 caracteres!${scor}\n"
+	echo -e "\n${cor1}คุณป้อนชื่อผู้ใช้ที่ยาวมาก"
+	echo -e "${cor1}ใช้อักขระสูงสุด 10 ตัว!${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mSenha:\033[1;37m ";read password
+echo -ne "\033[1;32mPassword:\033[1;37m ";read password
 [[ -z $password ]] && {
-	echo -e "\n${cor1}Senha vazia ou invalida!${scor}\n"
+	echo -e "\n${cor1}รหัสผ่านว่างเปล่าหรือไม่ถูกต้อง!${scor}\n"
 	exit 1
 }
 sizepass=$(echo ${#password})
 [[ $sizepass -lt 4 ]] && {
-	echo -e "\n${cor1}Senha curta!, use no mínimo 4 caracteres${scor}\n"
+	echo -e "\n${cor1}รหัสผ่านสั้น ! ใช้อักขระอย่างน้อย 4 ตัว${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mDias para expirar:\033[1;37m ";read dias
+echo -ne "\033[1;32mDate Expired:\033[1;37m ";read dias
 [[ -z $dias ]] && {
-	echo -e "\n${cor1}Numero de dias vazio!${scor}\n"
+	echo -e "\n${cor1}จำนวนวันที่ว่าง!${scor}\n"
 	exit 1
 }
 [[ ${dias} != ?(+|-)+([0-9]) ]] && {
-	echo -e "\n${cor1}Você digitou um número de dias inválido!${scor}\n"
+	echo -e "\n${cor1}คุณป้อนจำนวนวันที่ไม่ถูกต้อง!${scor}\n"
 	exit 1
 }
 [[ $dias -lt 1 ]] && {
-	echo -e "\n${cor1}O número deve ser maior que zero!${scor}\n"
+	echo -e "\n${cor1}ตัวเลขต้องมากกว่าศูนย์!${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mLimite de conexões:\033[1;37m ";read sshlimiter
+echo -ne "\033[1;32mUser Limited:\033[1;37m ";read sshlimiter
 [[ -z $sshlimiter ]] && {
-	echo -e "\n${cor1}Você deixou o limite de conexões vazio!${scor}\n"
+	echo -e "\n${cor1}คุณเว้นขีดจำกัดการเชื่อมต่อว่างไว้!${scor}\n"
 	exit 1
 }
 [[ ${sshlimiter} != ?(+|-)+([0-9]) ]] && {
-	echo -e "\n${cor1}Você digitou um número de conexões inválido!${scor}\n"
+	echo -e "\n${cor1}คุณป้อนจำนวนการเชื่อมต่อที่ไม่ถูกต้อง!${scor}\n"
 	exit 1
 }
 [[ $sshlimiter -lt 1 ]] && {
-	echo -e "\n${cor1}Número de conexões simultâneas deve ser maior que zero!${scor}\n"
+	echo -e "\n${cor1}จำนวนการเชื่อมต่อพร้อมกันต้องมากกว่าศูนย์!${scor}\n"
 	exit 1
 }
 final=$(date "+%Y-%m-%d" -d "+$dias days")
@@ -325,13 +325,13 @@ useradd -e $final -M -s /bin/false -p $pass $username >/dev/null 2>&1 &
 echo "$password" >/etc/SSHPlus/senha/$username
 echo "$username $sshlimiter" >>/root/usuarios.db
 [[ -e /etc/openvpn/server.conf ]] && {
-	echo -ne "\033[1;32mGerar Arquivo Ovpn \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resp
-	[[ "$resp" = @(s|S) ]] && {
+	echo -ne "\033[1;32mGerar Arquivo Ovpn \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read resp
+	[[ "$resp" = @(y|Y) ]] && {
 		rm $username.zip $username.ovpn >/dev/null 2>&1
-		echo -ne "\033[1;32mGerar Com usuário e Senha \033[1;31m? \033[1;33m[s/n]:\033[1;37m "
+		echo -ne "\033[1;32mGerar Com usuário e Senha \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "
 		read respost
-		echo -ne "\033[1;32mHost Atual\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mAlterar \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read oprc
-		[[ "$oprc" = @(s|S) ]] && {
+		echo -ne "\033[1;32mHost Atual\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mAlterar \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read oprc
+		[[ "$oprc" = @(y|Y) ]] && {
 			fun_edithost
 		} || {
 			fun_geraovpn
