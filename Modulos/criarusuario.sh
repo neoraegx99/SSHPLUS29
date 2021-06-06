@@ -43,12 +43,12 @@ fun_geraovpn() {
     rmt=$(sed -n '7 p' /etc/openvpn/client-common.txt)
     hedr=$(sed -n '8 p' /etc/openvpn/client-common.txt)
     prxy=$(sed -n '9 p' /etc/openvpn/client-common.txt)
-    rmt2='www.fastnetvpn.pw'
+    rmt2='/SSHPLUS?'
     rmt3='www.vivo.com.br 8088'
     prx='200.142.130.104'
     payload1='#payload "HTTP/1.0 [crlf]Host: m.youtube.com[crlf]CONNECT HTTP/1.0[crlf][crlf]|[crlf]"'
     payload2='#payload "CONNECT 127.0.0.1:1194[split][crlf] HTTP/1.0 [crlf][crlf]#"'
-    vivo1="www.opensignal.com"
+    vivo1="portalrecarga.vivo.com.br/recarga"
     vivo2="portalrecarga.vivo.com.br/controle/"
     vivo3="navegue.vivo.com.br/pre/"
     vivo4="navegue.vivo.com.br/controle/"
@@ -57,7 +57,7 @@ fun_geraovpn() {
     bypass="net_gateway"
     cert01="/etc/openvpn/client-common.txt"
     if [[ "$hst" == "$vivo1" ]]; then
-        Host="www.opensignal.com"
+        Host="Portal Recarga"
     elif [[ "$hst" == "$vivo2" ]]; then
         Host="Recarga contole"
     elif [[ "$hst" == "$vivo3" ]]; then
