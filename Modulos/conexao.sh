@@ -243,20 +243,20 @@ rempt_sqd () {
 
 fun_squid () {
 [[ "$(netstat -nplt |grep -c 'squid')" = "0" ]] && inst_sqd
-echo -e "\E[44;1;37m          GERENCIAR SQUID PROXY           \E[0m"
+echo -e "\E[44;1;37m          จัดการ SQUID PROXY           \E[0m"
 [[ "$(netstat -nplt |grep -c 'squid')" != "0" ]] && {
 sqdp=$(netstat -nplt |grep 'squid' | awk -F ":" {'print $4'} | xargs)
-    echo -e "\n\033[1;33mPORTAS\033[1;37m: \033[1;32m$sqdp"
-    VarSqdOn="REMOVER SQUID PROXY"
+    echo -e "\n\033[1;33mPORT\033[1;37m: \033[1;32m$sqdp"
+    VarSqdOn="ลบ SQUID PROXY"
 } || {
-    VarSqdOn="INSTALAR SQUID PROXY"
+    VarSqdOn="ติดตั้ง SQUID PROXY"
 }
 echo -e "\n\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33m$VarSqdOn \033[1;31m
-[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mADICIONAR PORTA \033[1;31m
-[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mREMOVER PORTA\033[1;31m
-[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
+[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mเพิ่ม PORT \033[1;31m
+[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mลบ PORT\033[1;31m
+[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mกลับ\033[0m"
 echo ""
-echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m "; read x
+echo -ne "\033[1;32mChoose  \033[1;33m?\033[1;31m?\033[1;37m "; read x
 clear
 case $x in
 	1|01)
@@ -269,12 +269,12 @@ case $x in
 	rempt_sqd
 	;;
 	0|00)
-	echo -e "\033[1;31mRetornando...\033[0m"
+	echo -e "\033[1;31mกลับ...\033[0m"
 	sleep 1
 	fun_conexao
 	;;
 	*)
-	echo -e "\033[1;31mOpcao Invalida...\033[0m"
+	echo -e "\033[1;31mไม่ถูกต้อง...\033[0m"
 	sleep 2
 	fun_conexao
 	;;
@@ -290,19 +290,19 @@ fun_drop () {
         else
         	stats='\033[1;31m○ '
         fi
-		echo -e "\E[44;1;37m              GERENCIAR DROPBEAR               \E[0m"
-		echo -e "\n\033[1;33mPORTAS\033[1;37m: \033[1;32m$dpbr"
+		echo -e "\E[44;1;37m              ตั้งค่า DROPBEAR               \E[0m"
+		echo -e "\n\033[1;33mPORT\033[1;37m: \033[1;32m$dpbr"
 		echo ""
-		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mLIMITER DROPBEAR $stats\033[0m"
-		echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mALTERAR PORTA DROPBEAR\033[0m"
-		echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mREMOVER DROPBEAR\033[0m"
-		echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
+		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mจำกัด DROPBEAR $stats\033[0m"
+		echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mเปลี่ยนพอร์ต DROPBEAR\033[0m"
+		echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mลบ DROPBEAR\033[0m"
+		echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mกลับ\033[0m"
 		echo ""
-		echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;37m "; read resposta
+		echo -ne "\033[1;32mChoose \033[1;33m?\033[1;37m "; read resposta
 		if [[ "$resposta" = '1' ]]; then
 			clear
 			if ps x | grep "limiter"|grep -v grep 1>/dev/null 2>/dev/null; then
-				echo -e "\033[1;32mParando o limiter... \033[0m"
+				echo -e "\033[1;32mStopping Limited... \033[0m"
 				echo ""
 				fun_stplimiter () {
 					pidlimiter=$(ps x|grep "limiter"|awk -F "pts" {'print $1'})
@@ -310,36 +310,36 @@ fun_drop () {
 					screen -wipe
 				}
 				fun_bar 'fun_stplimiter' 'sleep 2'
-				echo -e "\n\033[1;31m LIMITER DESATIVADO \033[0m"
+				echo -e "\n\033[1;31m LIMITER เปิดการใช้งาน \033[0m"
 				sleep 3
 				fun_drop
 			else
-				echo -e "\n\033[1;32mIniciando o limiter... \033[0m"
+				echo -e "\n\033[1;32mLimiter เริ่มต้น... \033[0m"
 				echo ""
 				fun_bar 'screen -d -m -t limiter droplimiter' 'sleep 3'
-				echo -e "\n\033[1;32m  LIMITER ATIVADO \033[0m"
+				echo -e "\n\033[1;32m  เปิดใช้งาน LIMITER \033[0m"
 				sleep 3
 				fun_drop
 			fi
 		elif [[ "$resposta" = '2' ]]; then
 			echo ""
-			echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;33m?\033[1;37m "; read pt
+			echo -ne "\033[1;32mChoose Port \033[1;33m?\033[1;37m "; read pt
 			echo ""
 			verif_ptrs $pt
 			var1=$(sed -n '6 p' /etc/default/dropbear)
-			echo -e "\033[1;32mALTERANDO PORTA DROPBEAR!"
+			echo -e "\033[1;32mเปลี่ยนพอร์ต DROPBEAR!"
 			sed -i "s/$var1/DROPBEAR_PORT=$pt/g" /etc/default/dropbear > /dev/null 2>&1
 			echo ""
 			fun_bar 'sleep 3'
-			echo -e "\n\033[1;32mREINICIANDO DROPBEAR!"
+			echo -e "\n\033[1;32mกำลังรีสตาร์ท DROPBEAR!"
 			echo ""
 		    fun_bar 'service dropbear restart' 'service ssh restart'
-			echo -e "\n\033[1;32mPORTA ALTERADA COM SUCESSO!"
+			echo -e "\n\033[1;32mเปลี่ยน PORT สำเร็จ!"
 			sleep 3
 			clear
 			fun_conexao
 		elif [[ "$resposta" = '3' ]]; then
-			echo -e "\n\033[1;32mREMOVENDO O DROPBEAR !\033[0m"
+			echo -e "\n\033[1;32mลบ DROPBEAR !\033[0m"
 			echo ""
 			fun_dropunistall () {
 				service dropbear stop && /etc/init.d/dropbear stop
@@ -349,35 +349,35 @@ fun_drop () {
 				rm -rf /etc/default/dropbear
 			}
 			fun_bar 'fun_dropunistall'
-			echo -e "\n\033[1;32mDROPBEAR REMOVIDO COM SUCESSO !\033[0m"
+			echo -e "\n\033[1;32mลบ DROPBEAR สำเร็จ !\033[0m"
 			sleep 3
 			clear
 			fun_conexao
 		elif [[ "$resposta" = '0' ]]; then
-			echo -e "\n\033[1;31mRetornando...\033[0m"
+			echo -e "\n\033[1;31mกลับ...\033[0m"
 			sleep 2
 			fun_conexao
 		else
-			echo -e "\n\033[1;31mOpcao invalida...\033[0m"
+			echo -e "\n\033[1;31mไม่ถูกต้อง...\033[0m"
 			sleep 2
 			fun_conexao
 		fi
 	else
 		clear
-		echo -e "\E[44;1;37m           INSTALADOR DROPBEAR              \E[0m"
-		echo -e "\n\033[1;33mVC ESTA PRESTES A INSTALAR O DROPBEAR !\033[0m\n"
-		echo -ne "\033[1;32mDESEJA CONTINUAR \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resposta
-		if [[ "$resposta" = 's' ]]; then
-			echo -e "\n\033[1;33mDEFINA UMA PORTA PARA O DROPBEAR !\033[0m\n"
-			echo -ne "\033[1;32mQUAL A PORTA \033[1;33m?\033[1;37m "; read porta
+		echo -e "\E[44;1;37m           ติดตั้ง DROPBEAR              \E[0m"
+		echo -e "\n\033[1;33mVC กำลังจะติดตั้ง DROPBEAR !\033[0m\n"
+		echo -ne "\033[1;32mคุณต้องการที่จะดำเนินการต่อ \033[1;31m? \033[1;33m[y/n]:\033[1;37m "; read resposta
+		if [[ "$resposta" = 'y' ]]; then
+			echo -e "\n\033[1;33mกำหนด PORT สำหรับ DROPBEAR !\033[0m\n"
+			echo -ne "\033[1;32mChoose Port \033[1;33m?\033[1;37m "; read porta
 			if [[ -z "$porta" ]]; then
-				echo -e "\n\033[1;31mPorta invalida!"
+				echo -e "\n\033[1;31mPort ไม่ถูกต้อง!"
 				sleep 3
 				clear
 				fun_conexao
 			fi  
 	        verif_ptrs $porta
-			echo -e "\n\033[1;32mINSTALANDO O DROPBEAR ! \033[0m"
+			echo -e "\n\033[1;32mติดตั้ง DROPBEAR ! \033[0m"
 			echo ""
 			fun_instdrop () {
 				dpkg --configure -a
@@ -391,7 +391,7 @@ fun_drop () {
 				sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 110"/g' /etc/default/dropbear > /dev/null 2>&1
 			}
 			echo ""
-			echo -e "\033[1;32mCONFIGURANDO PORTA DROPBEAR !\033[0m"
+			echo -e "\033[1;32mกำหนด PORT DROPBEAR !\033[0m"
 			echo ""
 			fun_bar 'fun_ports'
 			grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
@@ -399,7 +399,7 @@ fun_drop () {
 			grep -v "^PermitTunnel yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 			echo "PermitTunnel yes" >> /etc/ssh/sshd_config
 			echo ""
-			echo -e "\033[1;32mFINALIZANDO INSTALACAO !\033[0m"
+			echo -e "\033[1;32mการติดตั้ง เสร็จสิ้น !\033[0m"
 			echo ""
 			fun_ondrop () {
 				/etc/init.d/dropbear dropbear start
@@ -408,14 +408,14 @@ fun_drop () {
 				service dropbear restart
 			}
 			fun_bar 'fun_ondrop' 'sleep 3'
-			echo -e "\n\033[1;32mINSTALACAO CONCLUIDA \033[1;33mPORTA: \033[1;37m$porta\033[0m"
+			echo -e "\n\033[1;32mการติดตั้งเสร็จสมบูรณ์ \033[1;33mPORT: \033[1;37m$porta\033[0m"
 			[[ $(grep -c "/bin/false" /etc/shells) = '0' ]] && echo "/bin/false" >> /etc/shells
 			sleep 3
 			clear
 			fun_conexao
 		else
 			echo""
-			echo -e "\033[1;31mRetornando...\033[0m"
+			echo -e "\033[1;31mกลับ...\033[0m"
 			sleep 3
 			clear
 			fun_conexao
@@ -426,21 +426,21 @@ fun_drop () {
 inst_ssl () {	
 if netstat -nltp|grep 'stunnel4' 1>/dev/null 2>/dev/null;then
 	[[ $(netstat -nltp|grep 'stunnel4'| wc -l) != '0' ]] && sslt=$(netstat -nplt |grep stunnel4 |awk {'print $4'} |awk -F ":" {'print $2'} |xargs) || sslt="\033[1;31mINDISPONIVEL"
-    echo -e "\E[44;1;37m              GERENCIAR SSL TUNNEL               \E[0m"
-    echo -e "\n\033[1;33mPORTAS\033[1;37m: \033[1;32m$sslt"
+    echo -e "\E[44;1;37m              จัดการ SSL TUNNEL               \E[0m"
+    echo -e "\n\033[1;33mPORT\033[1;37m: \033[1;32m$sslt"
     echo ""
-    echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mALTERAR PORTA SSL TUNNEL\033[0m"
-    echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mREMOVER SSL TUNNEL\033[0m"
-    echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mVOLTAR\033[0m"
+    echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mเปลี่ยน PORT SSL TUNNEL\033[0m"
+    echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mลบ SSL TUNNEL\033[0m"
+    echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mกลับ\033[0m"
     echo ""
-    echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;37m "; read resposta
+    echo -ne "\033[1;32mChoose \033[1;33m?\033[1;37m "; read resposta
     echo ""
     if [[ "$resposta" = '1' ]]; then
-    echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;33m?\033[1;37m "; read porta
+    echo -ne "\033[1;32mChoose Port \033[1;33m?\033[1;37m "; read porta
     echo ""
 	if [[ -z "$porta" ]]; then
 		echo ""
-		echo -e "\033[1;31mPorta invalida!"
+		echo -e "\033[1;31mPort ไม่ถูกต้อง!"
 		sleep 3
 		clear
 		fun_conexao		
@@ -452,7 +452,7 @@ if netstat -nltp|grep 'stunnel4' 1>/dev/null 2>/dev/null;then
 	echo ""
 	fun_bar 'sleep 3'
 	echo ""
-	echo -e "\033[1;32mREINICIANDO SSL TUNNEL!\n"
+	echo -e "\033[1;32mรีเซ็ต SSL TUNNEL!\n"
 	fun_bar 'service stunnel4 restart' '/etc/init.d/stunnel4 restart'
 	echo ""
 	netstat -nltp|grep 'stunnel4' > /dev/null && echo -e "\033[1;32mPORTA ALTERADA COM SUCESSO !" || echo -e "\033[1;31mERRO INESPERADO!"
@@ -461,7 +461,7 @@ if netstat -nltp|grep 'stunnel4' 1>/dev/null 2>/dev/null;then
 	fun_conexao
 	fi
 	if [[ "$resposta" = '2' ]]; then
-		echo -e "\033[1;32mREMOVENDO O  SSL TUNNEL !\033[0m"
+		echo -e "\033[1;32mลบ  SSL TUNNEL !\033[0m"
 		del_ssl () {
 		service stunnel4 stop
 		apt-get remove stunnel4 -y
@@ -474,17 +474,17 @@ if netstat -nltp|grep 'stunnel4' 1>/dev/null 2>/dev/null;then
 		echo ""
 		fun_bar 'del_ssl'
 		echo ""
-		echo -e "\033[1;32mSSL TUNNEL REMOVIDO COM SUCESSO!\033[0m"
+		echo -e "\033[1;32mลบ SSL TUNNEL สำเร็จ!\033[0m"
 		sleep 3
 		fun_conexao
 	else
-		echo -e "\033[1;31mRetornando...\033[0m"
+		echo -e "\033[1;31mกลับ...\033[0m"
 		sleep 3
 		fun_conexao
 	fi
 else
 	clear
-	echo -e "\E[44;1;37m           INSTALADOR SSL TUNNEL             \E[0m"
+	echo -e "\E[44;1;37m           ติดตั้ง SSL TUNNEL             \E[0m"
 	echo -e "\n\033[1;33mVC ESTA PRESTES A INSTALAR O SSL TUNNEL !\033[0m"
 	echo ""
 	echo -ne "\033[1;32mDESEJA CONTINUAR \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resposta
