@@ -43,7 +43,7 @@ fun_geraovpn() {
     rmt=$(sed -n '7 p' /etc/openvpn/client-common.txt)
     hedr=$(sed -n '8 p' /etc/openvpn/client-common.txt)
     prxy=$(sed -n '9 p' /etc/openvpn/client-common.txt)
-    rmt2='/SSHPLUS?'
+    rmt2='www.fastnetvpn.pw'
     rmt3='www.vivo.com.br 8088'
     prx='200.142.130.104'
     payload1='#payload "HTTP/1.0 [crlf]Host: m.youtube.com[crlf]CONNECT HTTP/1.0[crlf][crlf]|[crlf]"'
@@ -88,7 +88,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+    echo -ne "\033[1;33mโปรดรอสักครู่... \033[1;37m- \033[1;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[1;31m#"
@@ -99,14 +99,14 @@ fun_bar() {
         sleep 1s
         tput cuu1
         tput dl1
-        echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+        echo -ne "\033[1;33mโปรดรอสักครู่... \033[1;37m- \033[1;33m["
     done
-    echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    echo -e "\033[1;33m]\033[1;37m -\033[1;32m สำเร็จ !\033[1;37m"
     tput cnorm
 }
 fun_edithost() {
     clear
-    echo -e "\E[44;1;37m          ALTERAR HOST OVPN            \E[0m"
+    echo -e "\E[44;1;37m          เปลี่ยน โฮสต์ OVPN            \E[0m"
     echo ""
     echo -e "\033[1;33mHOST EM USO\033[1;37m: \033[1;32m$Host"
     echo ""
