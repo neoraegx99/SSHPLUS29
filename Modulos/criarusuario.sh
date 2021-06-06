@@ -325,12 +325,12 @@ useradd -e $final -M -s /bin/false -p $pass $username >/dev/null 2>&1 &
 echo "$password" >/etc/SSHPlus/senha/$username
 echo "$username $sshlimiter" >>/root/usuarios.db
 [[ -e /etc/openvpn/server.conf ]] && {
-	echo -ne "\033[1;32mGerar Arquivo Ovpn \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read resp
+	echo -ne "\033[1;32mGenerate Ovpn File \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read resp
 	[[ "$resp" = @(y|Y) ]] && {
 		rm $username.zip $username.ovpn >/dev/null 2>&1
-		echo -ne "\033[1;32mGerar Com usuário e Senha \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "
+		echo -ne "\033[1;32mGenerate with username and password \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "
 		read respost
-		echo -ne "\033[1;32mHost Atual\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mAlterar \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read oprc
+		echo -ne "\033[1;32mCurrent Host\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mChange \033[1;31m? \033[1;33m[Y/N]:\033[1;37m "; read oprc
 		[[ "$oprc" = @(y|Y) ]] && {
 			fun_edithost
 		} || {
@@ -343,12 +343,12 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 			}
 		}
 		clear
-		echo -e "\E[44;1;37m       CONTA SSH CRIADA !      \E[0m"
+		echo -e "\E[44;1;37m       สร้างบัญชี SSH แล้ว !      \E[0m"
 		echo -e "\n\033[1;32mIP: \033[1;37m$IP"
-		echo -e "\033[1;32mUsuário: \033[1;37m$username"
-		echo -e "\033[1;32mSenha: \033[1;37m$password"
-		echo -e "\033[1;32mExpira em: \033[1;37m$gui"
-		echo -e "\033[1;32mLimite de conexões: \033[1;37m$sshlimiter"
+		echo -e "\033[1;32mUsername: \033[1;37m$username"
+		echo -e "\033[1;32mPassword: \033[1;37m$password"
+		echo -e "\033[1;32mDate Expired: \033[1;37m$gui"
+		echo -e "\033[1;32mUser Limited: \033[1;37m$sshlimiter"
 		sleep 1
 		function aguarde() {
 			helice() {
@@ -363,7 +363,7 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 				tput cnorm
 			}
 			echo ""
-			echo -ne "\033[1;31mCRIANDO OVPN\033[1;33m.\033[1;31m. \033[1;32m"
+			echo -ne "\033[1;31mกำลังสร้าง OVPN...\033[1;33m.\033[1;31m. \033[1;32m"
 			helice
 			echo -e "\e[1DOK"
 		}
@@ -378,24 +378,24 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 				echo -e "\033[1;32mLINK\033[1;37m: \033[1;36m$IP:81/openvpn/$username.zip"
 			}
 		} || {
-			echo -e "\033[1;32mDisponivel em\033[1;31m" ~/"$username.zip\033[0m"
+			echo -e "\033[1;32mDownload \033[1;31m" ~/"$username.zip\033[0m"
 			sleep 1
 		}
 	} || {
 		clear
-		echo -e "\E[44;1;37m       CONTA SSH CRIADA !      \E[0m"
+		echo -e "\E[44;1;37m       สร้างบัญชี SSH แล้ว !      \E[0m"
 		echo -e "\n\033[1;32mIP: \033[1;37m$IP"
-		echo -e "\033[1;32mUsuário: \033[1;37m$username"
-		echo -e "\033[1;32mSenha: \033[1;37m$password"
-		echo -e "\033[1;32mExpira em: \033[1;37m$gui"
-		echo -e "\033[1;32mLimite de conexões: \033[1;37m$sshlimiter"
+		echo -e "\033[1;32mUsername: \033[1;37m$username"
+		echo -e "\033[1;32mPassword: \033[1;37m$password"
+		echo -e "\033[1;32mDate Expired: \033[1;37m$gui"
+		echo -e "\033[1;32mUser Limited: \033[1;37m$sshlimiter"
 	}
 } || {
 	clear
-	echo -e "\E[44;1;37m       CONTA SSH CRIADA !      \E[0m"
+	echo -e "\E[44;1;37m       สร้างบัญชี SSH แล้ว !      \E[0m"
 	echo -e "\n\033[1;32mIP: \033[1;37m$IP"
-	echo -e "\033[1;32mUsuário: \033[1;37m$username"
-	echo -e "\033[1;32mSenha: \033[1;37m$password"
-	echo -e "\033[1;32mExpira em: \033[1;37m$gui"
-	echo -e "\033[1;32mLimite de conexões: \033[1;37m$sshlimiter"
+	echo -e "\033[1;32mUsername: \033[1;37m$username"
+	echo -e "\033[1;32mPassword: \033[1;37m$password"
+	echo -e "\033[1;32mDate Expired: \033[1;37m$gui"
+	echo -e "\033[1;32mUser Limited: \033[1;37m$sshlimiter"
 }
