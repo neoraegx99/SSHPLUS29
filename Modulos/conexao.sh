@@ -90,7 +90,7 @@ echo ""
 read -p "ป้อน IP ของคุณ: " IP
 fi
 echo -e "\n\033[1;33mPort ใดที่คุณต้องการใช้กับ SQUID \033[1;31m?"
-echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mกำหนด Port ตามลำดับ \033[1;33mEX: \033[1;37m80 8080 8799"
+echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mกำหนด Port ตามลำดับ \033[1;33mEX: \033[1;37m80 8080 8799 3128"
 echo ""
 echo -ne "\033[1;32mPort\033[1;37m: "; read portass
 if [[ -z "$portass" ]]; then
@@ -123,7 +123,7 @@ echo ".claro.com.br/
 echo "acl url1 dstdomain -i 127.0.0.1
 acl url2 dstdomain -i localhost
 acl url3 dstdomain -i $ipdovps
-acl url4 dstdomain -i www.fastnetvpn.pw
+acl url4 dstdomain -i /SSHPLUS?
 acl payload url_regex -i "$var_pay"
 acl all src 0.0.0.0/0
 
@@ -1208,7 +1208,7 @@ proto $PROTOCOL
 sndbuf 0
 rcvbuf 0
 setenv opt method GET
-remote www.fastnetvpn.pw $porta
+remote /SSHPLUS? $porta
 http-proxy-option CUSTOM-HEADER Host portalrecarga.vivo.com.br/recarga
 http-proxy $IP 80
 resolv-retry 5
@@ -1225,7 +1225,7 @@ auth-user-pass
 keepalive 10 120
 float" > /etc/openvpn/client-common.txt
 	# Generates the custom client.ovpn
-	newclient "www.fastnetvpn.pw"
+	newclient "/SSHPLUS?"
 	echo ""
 	echo -e "\033[1;32mติดตั้ง OPENVPN สำเร็จ\033[0m"
 fi
