@@ -1,9 +1,9 @@
 #!/bin/bash
 #====================================================
-#	SCRIPT: BOTSSH SSHPLUS MANAGER
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	SCRIPT: BOT KH-VPN FREE SCRIPT
+#	DEVELOPED BY:	LUNDY KUBTAPHAKON
+#	CONTACT TELEGRAM:	http://t.me/dev_vpn
+#	FACEBOOK:	@FREENETVPNDTAC
 #====================================================
 clear
 fun_bar() {
@@ -29,21 +29,21 @@ fun_bar() {
         tput dl1
         echo -ne "\033[1;33m["
     done
-    echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    echo -e "\033[1;33m]\033[1;37m -\033[1;32m สำเร็จ !\033[1;37m"
     tput cnorm
 }
 
 fun_botOnOff() {
     [[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) = '0' ]] && {
         clear
-        echo -e "\E[44;1;37m             INSTALADOR BOT SSHPLUS                \E[0m\n"
-        echo -ne "\033[1;32mINFORME SEU TOKEN:\033[1;37m "
+        echo -e "\E[44;1;37m             โปรแกรมติดตั้งบอท KH-VPN                \E[0m\n"
+        echo -ne "\033[1;32mแจ้งโทเค็นของคุณ:\033[1;37m "
         read tokenbot
         echo ""
-        echo -ne "\033[1;32mINFORME SEU ID:\033[1;37m "
+        echo -ne "\033[1;32mแจ้ง ID ของคุณ:\033[1;37m "
         read iduser
         clear
-        echo -e "\033[1;32mINICIANDO BOT SSHPLUS \033[0m\n"
+        echo -e "\033[1;32mการเริ่มต้นบอท KH-VPN \033[0m\n"
         fun_bot1() {
             [[ ! -e "/etc/SSHPlus/ShellBot.sh" ]] && wget -qO- https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh >/etc/SSHPlus/ShellBot.sh
             cd /etc/SSHPlus
@@ -66,7 +66,7 @@ fun_botOnOff() {
         menu
     } || {
         clear
-        echo -e "\033[1;32mPARANDO BOT SSHPLUS... \033[0m\n"
+        echo -e "\033[1;32mหยุดทำงานบอท... \033[0m\n"
         fun_bot2() {
             screen -r -S "bot_plus" -X quit
             screen -wipe 1>/dev/null 2>/dev/null
@@ -77,25 +77,25 @@ fun_botOnOff() {
             sleep 1
         }
         fun_bar 'fun_bot2'
-        echo -e "\n\033[1;32m \033[1;31mBOT SSHPLUS PARADO! \033[0m"
+        echo -e "\n\033[1;32m \033[1;31mบอทหยุดทำงาน! \033[0m"
         sleep 2
         menu
     }
 }
 
 fun_instbot() {
-    echo -e "\E[44;1;37m             INSTALADOR BOT SSHPLUS                \E[0m\n"
-    echo -e "                 \033[1;33m[\033[1;31m!\033[1;33m] \033[1;31mATENCAO \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
-    echo -e "\n\033[1;32m1° \033[1;37m- \033[1;33mPELO SEU TELEGRAM ACESSE OS SEGUINTES BOT\033[1;37m:\033[0m"
-    echo -e "\n\033[1;32m2° \033[1;37m- \033[1;33mBOT \033[1;37m@BotFather \033[1;33mCRIE O SEU BOT \033[1;31mOPCAO: \033[1;37m/newbot\033[0m"
-    echo -e "\n\033[1;32m3° \033[1;37m- \033[1;33mBOT \033[1;37m@SSHPLUS_BOT \033[1;33mE PEGUE SEU ID \033[1;31mOPCAO: \033[1;37m/id\033[0m"
+    echo -e "\E[44;1;37m             โปรแกรมติดตั้งบอท KH-VPN                \E[0m\n"
+    echo -e "                 \033[1;33m[\033[1;31m!\033[1;33m] \033[1;31mคำเตื่อน \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
+    echo -e "\n\033[1;32m1° \033[1;37m- \033[1;33mใช่เบอร์โทรศัพท์ของคุณ เข้าถึงบอทต่อไปนี้\033[1;37m:\033[0m"
+    echo -e "\n\033[1;32m2° \033[1;37m- \033[1;33mBOT \033[1;37m@BotFather \033[1;33mสร้างบอทของคุณ \033[1;31mเลื่อก: \033[1;37m/newbot\033[0m"
+    echo -e "\n\033[1;32m3° \033[1;37m- \033[1;33mBOT \033[1;37m@SSHPLUS_BOT \033[1;33mและรับ ID ของคุณ\033[1;31mเลื่อก: \033[1;37m/id\033[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[1;32m"
     echo ""
-    read -p "DESEJA CONTINUAR ? [s/n]: " -e -i s resposta
-    [[ "$resposta" = 's' ]] && {
+    read -p "คุณต้องการที่จะดำเนินการต่อ ? [y/n]: " -e -i s resposta
+    [[ "$resposta" = 'y' ]] && {
         fun_botOnOff
     } || {
-        echo -e "\n\033[1;31mRetornando...\033[0m"
+        echo -e "\n\033[1;31mกลับ...\033[0m"
         sleep 2
         menu
     }
