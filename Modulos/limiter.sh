@@ -1,9 +1,9 @@
 #!/bin/bash
 #====================================================
-#	SCRIPT: LIMITER SSHPLUS MANAGER
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	SCRIPT: KH-VPN FREE SCRIPT
+#	DEVELOPED BY:	LUNDY KUBTAPHAKON
+#	CONTACT TELEGRAM:	http://t.me/dev_vpn
+#	FACEBOOK:	@FREENETVPNDTAC
 #====================================================
 clear
 database="/root/usuarios.db"
