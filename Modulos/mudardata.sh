@@ -1,7 +1,7 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%33s%s%-12s\n' "Mudar data de expiração" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%33s%s%-12s\n' "เปลี่ยนวันหมดอายุ" ; tput sgr0
 echo ""
-echo -e "\033[1;33m LISTA DE USUARIOS E DATA DE EXPIRACAO:\033[0m "
+echo -e "\033[1;33m รายชื่อผู้ใช้และวันหมดอายุ:\033[0m "
 echo ""
 tput setaf 7 ; tput bold 
 database="/root/usuarios.db"
@@ -43,25 +43,25 @@ then
 	rm /tmp/exp
 fi
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
-echo -ne "\033[1;32mDigite ou selecione um usuario \033[1;33m[\033[1;36m1\033[1;33m-\033[1;36m$num_user\033[1;33m]\033[1;37m: " ; read option
+echo -ne "\033[1;32mป้อนหรือเลือกบัญชีผู้ใช้ \033[1;33m[\033[1;36m1\033[1;33m-\033[1;36m$num_user\033[1;33m]\033[1;37m: " ; read option
 if [[ -z $option ]]
 then
 	echo ""
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "Erro,  Nome de usuário vazio ou inválido! " ; tput sgr0
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "ผิดพลาด ชื่อผู้ใช้ว่างหรือไม่ถูกต้อง! " ; tput sgr0
 	exit 1
 fi
 usuario=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
 if [[ -z $usuario ]]
 then
 	echo ""
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "Erro,  Nome de usuário vazio ou inválido!!! " ; tput sgr0
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "ผิดพลาด ชื่อผู้ใช้ว่างหรือไม่ถูกต้อง!!! " ; tput sgr0
 	echo ""
 	exit 1
 else
 	if [[ `grep -c /$usuario: /etc/passwd` -ne 0 ]]
 	then
 	    echo ""
-	    echo -e "\033[1;31mEX:\033[1;33m(\033[1;32mDATA: \033[1;37mDIA/MÊS/ANO \033[1;33mOU \033[1;32mDIAS: \033[1;37m30\033[1;33m)"
+	    echo -e "\033[1;31mEX:\033[1;33m(\033[1;32mDATA: \033[1;37mวัน/เดือน/ปี \033[1;33mหรือ \033[1;32mDAYS: \033[1;37m30\033[1;33m)"
 	    echo ""
 	    echo -ne "\033[1;32mNova data ou dias para o usuario \033[1;33m$usuario: \033[1;37m"; read inputdate
 	    if [[ "$(echo -e "$inputdate" | grep -c "/")" = "0" ]]; then 
