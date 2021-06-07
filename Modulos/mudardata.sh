@@ -76,7 +76,7 @@ else
 			if [[ -z $inputdate ]]
 			then
 				echo ""
-				tput setaf 7 ; tput setab 1 ; tput bold ;	echo "Você digitou uma data inválida ou inexistente!" ; echo "Digite uma data válida no formato DIA/MÊS/ANO " ; echo "Por exemplo: 21/04/2018" ; tput sgr0 ; tput sgr0
+				tput setaf 7 ; tput setab 1 ; tput bold ;	echo "คุณป้อนวันที่ที่ไม่ถูกต้องหรือไม่มีอยู่จริง!" ; echo "โปรดป้อนวันที่ที่ถูกต้องในรูปแบบ วัน/เดือน/ปี " ; echo "For exemplo: 21/04/2018" ; tput sgr0 ; tput sgr0
 				echo ""
 				exit 1	
 			else
@@ -87,32 +87,32 @@ else
 					if [ $today -ge $timemachine ]
 					then
 						echo ""
-						tput setaf 7 ; tput setab 1 ; tput bold ;	echo "Você digitou uma data passada ou o dia atual!" ; echo "Digite uma data futura e válida no formato DIA/MÊS/ANO" ; echo "Por exemplo: 21/04/2018" ; tput sgr0
+						tput setaf 7 ; tput setab 1 ; tput bold ;	echo "คุณป้อนวันที่ที่ผ่านมาหรือวันปัจจุบัน!" ; echo "โปรดป้อนวันที่ที่ถูกต้องในรูปแบบ วัน/เดือน/ปี" ; echo "For exemplo: 21/04/2018" ; tput sgr0
 						echo ""
 						exit 1
 					else
 						chage -E $sysdate $usuario
 						echo ""
-						tput setaf 7 ; tput setab 4 ; tput bold ; echo "Sucesso Usuário $usuario nova data: $udata " ; tput sgr0
+						tput setaf 7 ; tput setab 4 ; tput bold ; echo "ความสำเร็จของผู้ใช้ $usuario วันใหม่: $udata " ; tput sgr0
 						echo ""
 						exit 1
 					fi
 				else
 					echo ""
-					tput setaf 7 ; tput setab 1 ; tput bold ;	echo "Você digitou uma data inválida ou inexistente!" ; echo "Digite uma data válida no formato DIA/MÊS/ANO" ; echo "Por exemplo: 21/04/2018" ; tput sgr0
+					tput setaf 7 ; tput setab 1 ; tput bold ;	echo "คุณป้อนวันที่ที่ไม่ถูกต้องหรือไม่มีอยู่จริง!" ; echo "โปรดป้อนวันที่ที่ถูกต้องในรูปแบบ วัน/เดือน/ปี" ; echo "For exemplo: 21/04/2018" ; tput sgr0
 					echo ""
 					exit 1
 				fi
 			fi
 		else
 			echo ""
-			tput setaf 7 ; tput setab 1 ; tput bold ;	echo "Você digitou uma data inválida ou inexistente!" ; echo "Digite uma data válida no formato DIA/MÊS/ANO" ; echo "Por exemplo: 21/04/2018" ; tput sgr0
+			tput setaf 7 ; tput setab 1 ; tput bold ;	echo "คุณป้อนวันที่ที่ไม่ถูกต้องหรือไม่มีอยู่จริง!" ; echo "โปรดป้อนวันที่ที่ถูกต้องในรูปแบบ วัน/เดือน/ปี" ; echo "For exemplo: 21/04/2018" ; tput sgr0
 			echo ""
 			exit 1
 		fi
 	else
 		echo " "
-		tput setaf 7 ; tput setab 1 ; tput bold ;	echo "O usuário $usuario não existe!" ; tput sgr0
+		tput setaf 7 ; tput setab 1 ; tput bold ;	echo "ผู้ใช้งาน $usuario ไม่ได้อยู่!" ; tput sgr0
 		echo " "
 		exit 1
 	fi
