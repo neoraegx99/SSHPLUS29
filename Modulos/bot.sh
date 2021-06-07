@@ -1,11 +1,11 @@
 #!/bin/bash
 #===================================================
-#	SCRIPT: BOT SSHPLUS MANAGER
+#	SCRIPT: BOT KH-VPN FREE SCRIPT
 #   DATA ATT:   15 de Jul 2020
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#   API SHELLBOT:   SHAMAN
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#	DEVELOPED BY:	LUNDY KUBTAPHAKON
+#   API SHELLBOT:   KH-VPN
+#	CONTACT TELEGRAM:	http://t.me/dev_vpn
+#	FACEBOOK:	FREENETVPNDTAC
 #===================================================
 [[ ! -d /etc/SSHPlus ]] && exit 0
 [[ ! -d /etc/bot ]] && exit 0
