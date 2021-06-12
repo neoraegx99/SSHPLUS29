@@ -25,12 +25,12 @@ echo -e "\033[1;31m[\033[1;36m1\033[1;31m]\033[1;33m REMOVER UM USUARIO"
 echo -e "\033[1;31m[\033[1;36m2\033[1;31m]\033[1;33m REMOVER TODOS USUARIOS"
 echo -e "\033[1;31m[\033[1;36m3\033[1;31m]\033[1;33m VOLTAR"
 echo ""
-read -p "$(echo -e "\033[1;32mOQUE DESEJA FAZER\033[1;31m ?\033[1;37m : ")" -e -i 1 resp
+read -p "$(echo -e "\033[1;32mChoose\033[1;31m ?\033[1;37m : ")" -e -i 1 resp
 if [[ "$resp" = "1" ]]; then
 clear
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Remover Usuário SSH" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "ลบผู้ใช้ SSH" ; tput sgr0
 echo ""
-echo -e "\033[1;33mLISTA DE USUARIOS: \033[0m"
+echo -e "\033[1;33mรายชื่อผู้ใช้: \033[0m"
 echo""
 _userT=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
@@ -44,13 +44,13 @@ while read _user; do
 done <<< "${_userT}"
 echo ""
 num_user=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
-echo -ne "\033[1;32mDigite ou selecione um usuario \033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: " ; read option
+echo -ne "\033[1;32mป้อนหรือเลือกผู้ใช้\033[1;33m[\033[1;36m1\033[1;31m-\033[1;36m$num_user\033[1;33m]\033[1;37m: " ; read option
 user=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
 if [[ -z $option ]]; then
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "  Usuario vazio ou inválido!   " ; echo "" ; tput sgr0
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "  ผู้ใช้ว่างเปล่าหรือไม่ถูกต้อง!   " ; echo "" ; tput sgr0
 	exit 1
 elif [[ -z $user ]]; then
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo " Usuário vazio ou inválido! " ; echo "" ; tput sgr0
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo " ผู้ใช้ว่างเปล่าหรือไม่ถูกต้อง! " ; echo "" ; tput sgr0
 	exit 1
 else
 	if cat /etc/passwd |grep -w $user > /dev/null; then
@@ -109,18 +109,18 @@ elif [[ "$resp" = "2" ]]; then
 		done
 		rm $HOME/usuarios.db && touch $HOME/usuarios.db
         rm *.zip > /dev/null 2>&1
-		echo -e "\n\033[1;32mUSUARIOS REMOVIDOS COM SUCESSO!\033[0m"
+		echo -e "\n\033[1;32mต้องการลบผู้ใช้ทั้งหมดจริงๆ!\033[0m"
 		sleep 2
 		menu
 	else
-		echo -e "\n\033[1;31mRetornando ao menu...\033[0m"
+		echo -e "\n\033[1;31mกลับมาที่เมนู...\033[0m"
 		sleep 2
 		menu
 	fi
 elif [[ "$resp" = "3" ]]; then
 	menu
 else
-	echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+	echo -e "\n\033[1;31mตัวเลือกไม่ถูกต้อง !\033[0m"
 	sleep 1.5s
 	menu
 fi
