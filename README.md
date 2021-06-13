@@ -1,6 +1,6 @@
 ﻿# SSHPLUS MANAGER v29 (FREE)
 
-![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/blob/master/Imagenes/SSHPLUS_MANAGER.jpg)
+![logo](https://raw.githubusercontent.com/teamvpn/SSHPLUS29/master/Imagenes/11.jpg)
 
 
 ```
