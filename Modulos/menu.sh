@@ -378,7 +378,7 @@ case "$x" in
    ;;
    13)
    clear
-   echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
+   echo -e "\033[1;32mเพื่อออก คลิก CTRL + C\033[1;36m"
    sleep 4
    nload
    ;;
@@ -408,13 +408,13 @@ case "$x" in
    menu2
    ;;
    0 | 00)
-   echo -e "\033[1;31mSaindo...\033[0m"
+   echo -e "\033[1;31mออกจากหน้านี่...\033[0m"
    sleep 2
    clear
    exit;
    ;;
    *)
-   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+   echo -e "\n\033[1;31mเลือกไม่ถูกต้อง !\033[0m"
    sleep 2
 esac
 done
