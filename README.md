@@ -4,21 +4,21 @@
 
 
 ```
-SCRIPT SSHPLUS MANAGER es un script con un conjunto de características y herramientas adecuadas para 
-                 ofrecer extrema facilidad de manejo en servidores Linux con un enfoque en el uso de 
-                 VPN, tiene una interfaz agradable aportando información detallada sobre la máquina
-                 y los usuarios ...
+SCRIPT SSHPLUS MANAGER เป็นสคริปต์ที่มีชุดคุณสมบัติและเครื่องมือที่เหมาะสำหรับ
+                  นำเสนอความง่ายในการจัดการบนเซิร์ฟเวอร์ Linux โดยเน้นที่การใช้
+                  VPN มีอินเทอร์เฟซที่น่าพอใจซึ่งให้ข้อมูลรายละเอียดเกี่ยวกับเครื่อง
+                  และผู้ใช้...
 ```
 
 -------------------------------------------------------------------------------
 
 **Manager Script**
 
-## :heavy_exclamation_mark: Requerimientos
+## :heavy_exclamation_mark: ข้อกำหนด
 
-* Un sistema operativo basado en Linux (Ubuntu o Debian) 
-* Recomendamos Ubuntu 14.04
-* Se recomienda usar una distro nueva o formatiada
+* ระบบปฏิบัติการบน Linux (Ubuntu หรือ Debian)
+* เราขอแนะนำ Ubuntu 14.04 , 16.04, 18.04 Debian 9 , 10
+* ขอแนะนำให้ใช้ distro ใหม่หรือจัดรูปแบบ
 
 ## Installation
 
@@ -49,10 +49,10 @@ wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FR
 ![logo](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/blob/master/Imagenes/Panel_SSHPLUS_Web.jpg)
 
 ```
-PANEL SSHPLUS es una herramienta completa de gestión y supervisión de usuarios que permite
-                 reventas y sub revendedores para aquellos que desean tener un negocio más amplio, 
-                 también tiene una interfaz intuitiva, a la que se puede acceder desde cualquier 
-                 navegador ...
+PANEL SSHPLUS เป็นเครื่องมือจัดการและดูแลผู้ใช้ที่สมบูรณ์แบบที่ช่วยให้
+                  ตัวแทนจำหน่ายและตัวแทนจำหน่ายย่อยสำหรับผู้ที่ต้องการมีธุรกิจที่ใหญ่ขึ้น
+                  นอกจากนี้ยังมีอินเทอร์เฟซที่ใช้งานง่ายซึ่งสามารถเข้าถึงได้จากทุก from
+                  เบราว์เซอร์ ...
 ```
 
 ## Installation
@@ -74,17 +74,17 @@ wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FR
 -------------------------------------------------------------------------------
 
 ```
-* SIN MINERIA! 
-* SIN KEYS! 
-* VERSION GRATUITA 
-* SIN VIRUS TROJANO (BOTNET) 
-* ARCHIVOS LIBERADOS (DECENCRIPTADOS)
+* SIN MINING!
+* SIN KEYS!
+* FREE VERSION
+* TROJANO SIN VIRUS (BOTNET)
+* ARCHIVES RELEASED (DECCRIPTED)
 ```
 
 ```
-☆ https://t.me/admmanagerfree ☆
+☆ https://t.me/dev_vpn ☆
 
-☆ https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ ☆
+☆ https://github.com/teamvpn ☆
 ```
 
 **By: [ FULL SCRIPTS ⃘⃤꙰✰ ]**
