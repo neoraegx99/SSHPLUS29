@@ -21,9 +21,9 @@ database="/root/usuarios.db"
 clear
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Remover Usuário SSH" ; tput sgr0
 echo ""
-echo -e "\033[1;31m[\033[1;36m1\033[1;31m]\033[1;33m REMOVER UM USUARIO"
-echo -e "\033[1;31m[\033[1;36m2\033[1;31m]\033[1;33m REMOVER TODOS USUARIOS"
-echo -e "\033[1;31m[\033[1;36m3\033[1;31m]\033[1;33m VOLTAR"
+echo -e "\033[1;31m[\033[1;36m1\033[1;31m]\033[1;33m ลบผู้ใช้"
+echo -e "\033[1;31m[\033[1;36m2\033[1;31m]\033[1;33m ลบบัญชีผู้ใช้ทั้งหมด"
+echo -e "\033[1;31m[\033[1;36m3\033[1;31m]\033[1;33m กลับ"
 echo ""
 read -p "$(echo -e "\033[1;32mChoose\033[1;31m ?\033[1;37m : ")" -e -i 1 resp
 if [[ "$resp" = "1" ]]; then
@@ -57,7 +57,7 @@ else
 		echo ""
 		pkill -f "$user" > /dev/null 2>&1
 		deluser --force $user > /dev/null 2>&1
-		echo -e "\E[41;1;37m Usuario $user removido com sucesso! \E[0m"
+		echo -e "\E[41;1;37m ผู้ใช้ $user ลบเรียบร้อยแล้ว! \E[0m"
 		grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$user 1>/dev/null 2>/dev/null
 		if [[ -e /etc/openvpn/server.conf ]]; then
@@ -69,7 +69,7 @@ else
 		if [[ `grep -c $user /tmp/rem` -eq 0 ]]; then
 			deluser --force $user > /dev/null 2>&1
 			echo ""
-			echo -e "\E[41;1;37m Usuario $user removido com sucesso! \E[0m"
+			echo -e "\E[41;1;37m ผู้ใช้ $user ลบเรียบร้อยแล้ว! \E[0m"
 			grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 			rm /etc/SSHPlus/senha/$user 1>/dev/null 2>/dev/null
 			if [[ -e /etc/openvpn/server.conf ]]; then
@@ -78,10 +78,10 @@ else
 			exit 1
 		else
 		    echo ""
-			tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Usuário conectado. Desconectando..." ; tput sgr0
+			tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "ผู้ใช้เข้าสู่ระบบ กำลังตัดการเชื่อมต่อ..." ; tput sgr0
 			pkill -f "$user" > /dev/null 2>&1
 			deluser --force $user > /dev/null 2>&1
-			echo -e "\E[41;1;37m Usuario $user removido com sucesso! \E[0m"
+			echo -e "\E[41;1;37m ผู้ใช้ $user ลบเรียบร้อยแล้ว! \E[0m"
 			grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 			rm /etc/SSHPlus/senha/$user 1>/dev/null 2>/dev/null
 			if [[ -e /etc/openvpn/server.conf ]]; then
@@ -90,16 +90,16 @@ else
 			exit 1
 		fi
 	else
-		tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "O usuário $user não existe!" ; echo "" ; tput sgr0
+		tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "O ผู้ใช้ $user não existe!" ; echo "" ; tput sgr0
 	fi
 fi
 elif [[ "$resp" = "2" ]]; then
 	clear
-	tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Remover Usuário SSH" ; tput sgr0
+	tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "ลบผู้ใช้ SSH" ; tput sgr0
 	echo ""
-	echo -ne "\033[1;33mREALMENTE DESEJA REMOVER TODOS USUARIOS \033[1;37m[s/n]: "; read opc	
+	echo -ne "\033[1;33mต้องการลบผู้ใช้ทั้งหมดจริงๆ \033[1;37m[s/n]: "; read opc	
 	if [[ "$opc" = "s" ]]; then
-	echo -e "\n\033[1;33mAguarde\033[1;32m.\033[1;31m.\033[1;33m.\033[0m"
+	echo -e "\n\033[1;33mรอสักครู่\033[1;32m.\033[1;31m.\033[1;33m.\033[0m"
 		for user in $(cat /etc/passwd |awk -F : '$3 > 900 {print $1}' |grep -vi "nobody"); do
 			pkill -f $user > /dev/null 2>&1
 			deluser --force $user > /dev/null 2>&1
