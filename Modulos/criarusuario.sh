@@ -75,7 +75,7 @@ fun_geraovpn() {
     elif [[ "$hedr" == "$payload2" ]]; then
         Host="OPEN SQUID"
     else
-        Host="Customizado"
+        Host="Customized"
     fi
 }
 fun_bar() {
@@ -254,7 +254,7 @@ fun_edithost() {
     fi
 }
 [[ ! -e /usr/lib/sshplus ]] && exit 0
-tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "Criar Usuário SSH";tput sgr0
+tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "สร้างบัญชีผู้ใช้ SSH";tput sgr0
 echo ""
 echo -ne "\033[1;32mUsername:\033[1;37m ";read username
 [[ -z $username ]] && {
