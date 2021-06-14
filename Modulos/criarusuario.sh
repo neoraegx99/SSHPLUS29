@@ -26,7 +26,7 @@ newclient() {
     echo "</tls-auth>" >>~/$1.ovpn
 }
 fun_geraovpn() {
-    [[ "$respost" = @(s|S) ]] && {
+    [[ "$respost" = @(y|Y) ]] && {
         cd /etc/openvpn/easy-rsa/
         ./easyrsa build-client-full $username nopass
         newclient "$username"
@@ -331,7 +331,7 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 		echo -ne "\033[1;32mGenerate with username and password \033[1;31m? \033[1;33m[y/N]:\033[1;37m "
 		read respost
 		echo -ne "\033[1;32mCurrent Host\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mChange \033[1;31m? \033[1;33m[y/N]:\033[1;37m "; read oprc
-		[[ "$oprc" = @(s|S) ]] && {
+		[[ "$oprc" = @(y|Y) ]] && {
 			fun_edithost
 		} || {
 			fun_geraovpn
