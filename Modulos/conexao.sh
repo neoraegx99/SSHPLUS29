@@ -1208,9 +1208,8 @@ proto $PROTOCOL
 sndbuf 0
 rcvbuf 0
 setenv opt method GET
-remote /SSHPLUS? $porta
-http-proxy-option CUSTOM-HEADER Host portalrecarga.vivo.com.br/recarga
-http-proxy $IP 80
+remote $IP $porta
+http-proxy $IP 8080
 resolv-retry 5
 nobind
 persist-key
