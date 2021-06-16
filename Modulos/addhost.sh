@@ -38,7 +38,7 @@ else
 				then
 					service squid reload
 				fi	
-				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "O Proxy Squid Proxy foi recarregado com sucesso!" ; echo "" ; tput sgr0
+				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "ติดตั้ง Proxy Squid เรียบร้อยแล้ว!" ; echo "" ; tput sgr0
 				exit 1
 			fi
 		fi
